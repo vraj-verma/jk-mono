@@ -31,7 +31,7 @@ export class UsersService {
                 payload.updated_at,
             ]);
 
-            return response ? response as unknown as Users : null;
+            return response ? response[0] as unknown as Users : null;
         } catch (error) {
             console.error(`Something went wrong at database end`, error.message);
             throw new Error("DB error..")

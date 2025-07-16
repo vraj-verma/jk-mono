@@ -26,7 +26,7 @@ export class AccountsService {
                 payload.updated_at
             ]);
 
-            return response ? response as unknown as Accounts : null;
+            return response && response.length > 0 ? response[0] as unknown as Accounts : null;
         } catch (error) {
             console.error(`Something went wrong at database end`, error.message);
             return null;
@@ -35,22 +35,29 @@ export class AccountsService {
 
     async show(id: number): Promise<Accounts | null> {
         try {
-            const sql = `SELECT email, name, password, userId, status, createdAt, updatedAt FROM Users WHERE email = ?`;
+            const sql = `SELECT account_status, users_limit, users_used, created_at, updated_at FROM Accounts WHERE account_id = ?`;
 
             const response = await this.db.query(sql, [id]);
 
-            return response ? response as unknown as Accounts : null;
+            return response ? response[0] as unknown as Accounts : null;
         } catch (error) {
             console.error(`Something went wrong at database end`, error.message);
             return null;
         }
     }
 
-    async index() { }
+    async delete(id: number): Promise<number | null> {
+        try {
+            const sql = `DELETE FROM Accounts WHERE account_id = ?`;
 
-    async update() { }
+            const response = await this.db.query(sql, [id]);
 
-    async delete() { }
+            return response ? response[0].count : 0;
+        } catch (error) {
+            console.error(`Something went wrong at database end`, error.message);
+            return null;
+        }
+    }
 
 
 }

@@ -12,7 +12,7 @@ import { AccountsModule } from './accounts/accounts.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [() => require('../config.json')],
+      // load: [() => require('../config.json')],
       isGlobal: true,
     }),
     JwtModule.register({

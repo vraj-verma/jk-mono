@@ -1,7 +1,8 @@
 export interface Documents {
-    accountId: number;
-    userId: number;
+    account_id: number;
+    user_id: number;
     fileURL: string;
+    size: number;
     title: string;
     desc: string;
     status: 'uploaded' | 'failed'

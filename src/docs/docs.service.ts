@@ -29,7 +29,7 @@ export class DocsService {
                 payload.updated_at
             ]);
 
-            return response ? response as Documents : null;
+            return response ? response[0] as unknown as Documents : null;
 
         } catch (error) {
             console.error(`Something went wrong at db end`, error.message);
@@ -47,7 +47,7 @@ export class DocsService {
                 paged.limit
             ])
 
-            return response ? response : [];
+            return response && response.length > 0 ? response[0] : [];
         } catch (error) {
             console.error(`Something went wrong at db end`, error.message);
             throw new Error(`DB FindList failed: ${error.message}`);
@@ -66,7 +66,7 @@ export class DocsService {
 
             ]);
 
-            return response ? response as Documents : null;
+            return response ? response[0] as unknown as Documents : null;
 
         } catch (error) {
             console.error(`Something went wrong at db end`, error.message);

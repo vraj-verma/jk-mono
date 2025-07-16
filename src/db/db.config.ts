@@ -10,10 +10,10 @@ export class DatabaseConfigService implements OnModuleDestroy, OnApplicationShut
     private readonly configService: ConfigService,
   ) {
     this.client = new Client({
-      host: this.configService.get('db.db_host'),
-      port: this.configService.get<number>('db.db_port'),
-      user: this.configService.get('db.db_user'),
-      password: this.configService.get('db.db_pass'),
+      host: this.configService.get('DB_HOST'),
+      port: this.configService.get<number>('DB_PORT'),
+      user: this.configService.get('DB_USER'),
+      password: this.configService.get('DB_PASS'),
       // database: this.configService.get('DB_NAME'),
       ssl: {
         rejectUnauthorized: false,

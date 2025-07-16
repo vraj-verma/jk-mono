@@ -1,4 +1,21 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, ParseIntPipe, Patch, Post, Put, Query, Req, Res, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
+  Put,
+  Query,
+  Req,
+  Res,
+  UseGuards,
+
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { Users } from '../models/users.model';
 import { Request, Response } from 'express';
@@ -17,7 +34,6 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 @ApiTags('Users Controller')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
-@Roles([ROLES.ADMIN])
 @Controller('users')
 export class UsersController {
 
@@ -75,6 +91,7 @@ export class UsersController {
     })
   }
 
+
   @Get(':id')
   async show(
     @Req() req: Request,
@@ -101,6 +118,7 @@ export class UsersController {
 
 
   }
+
 
   @Get()
   async list(
@@ -143,6 +161,7 @@ export class UsersController {
 
   }
 
+
   @Patch()
   async update(
     @Req() req: Request,
@@ -175,6 +194,8 @@ export class UsersController {
 
   }
 
+
+  @Roles([ROLES.ADMIN])
   @Delete(':id')
   async delete(
     @Req() req: Request,
@@ -196,7 +217,7 @@ export class UsersController {
     res.status(200).json({
       status: true,
       response: `Deleted SUccessfully!`
-    })
+    });
 
   }
 

@@ -14,9 +14,9 @@ import { AwsS3BucketService } from '../aws/aws.service';
         {
             provide: S3,
             useFactory: async (configService: ConfigService) => {
-                const accessKeyId = configService.get<string>('aws.aws_access_key');
-                const secretAccessKey = configService.get<string>('aws.aws_access_secret');
-                const region = configService.get<string>('aws.aws_region');
+                const accessKeyId = configService.get<string>('AWS_ROOT_USER_ACCESS_KEY');
+                const secretAccessKey = configService.get<string>('AWS_ROOT_USER_ACCESS_SECRET');
+                const region = configService.get<string>('AWS_REGION');
 
                 if (!accessKeyId || !secretAccessKey || !region) {
                     throw new Error('Missing config values');
