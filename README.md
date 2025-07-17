@@ -25,8 +25,8 @@ The application consists of the following services:
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/vraj-verma/jk-repo.git
-   cd jk-repo
+   git clone https://github.com/vraj-verma/jk-mono.git
+   cd jk-mono
    ```
 
 2. Install dependencies:
